@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+
+  mqtt:
+    image: magimat/mosca
+    ports:
+      - "1883:1883"
+    networks:
+      - mqtt
+
+  bridge:
+    image: magimat/smartthings-mqtt-bridge
+    ports:
+      - "8080:8080"
+    networks:
+      - mqtt
+
+networks:
+  mqtt:
